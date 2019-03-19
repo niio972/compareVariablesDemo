@@ -1,0 +1,24 @@
+# function available minimum required
+availableFunctions:
+  - plotVarDemo
+integratedFunctions:
+# web client integrated function configuration
+  plotVarDemo:
+    label: "Compare two variables"
+    type: graphic
+    graphicType: plotly
+    formParameters:
+      varURI:
+        label: "Variables"
+        type: list
+        maxSelectedItem: 2
+        RfunctionValues: variableList
+        required: true
+      token:
+        type: string
+        visibility: hidden
+        required: true
+      wsUrl:
+        type: string
+        visibility: hidden
+        required: true
