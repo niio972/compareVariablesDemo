@@ -5,7 +5,7 @@ integratedFunctions:
 # web client integrated function configuration
   plotVarDemo:
     description : > 
-      \### Compare two variables
+      \### Compare two variables \n
       A demo app that help you to compare two variables
     label: "Compare two variables"
     type: graphic
