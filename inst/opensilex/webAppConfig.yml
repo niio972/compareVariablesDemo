@@ -4,9 +4,9 @@ availableFunctions:
 integratedFunctions:
 # web client integrated function configuration
   plotVarDemo:
-    description : | 
-      '### Compare two variables
-      A demo app that help you to compare two variables'
+    description : > 
+      \### Compare two variables
+      A demo app that help you to compare two variables
     label: "Compare two variables"
     type: graphic
     graphicType: plotly
