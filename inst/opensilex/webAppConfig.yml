@@ -7,19 +7,3 @@ integratedFunctions:
     description : |
       A demo app that help you to compare two variables
     label: "Compare two variables"
-     # external Client (optional)
-    type: graphic
-    graphicType: plotly
-    formParameters:
-      varURI:
-        label: "Variables"
-        type: list
-        maxSelectedItem: 2
-        RfunctionValues: variableList
-        required: true
-      token:
-        type: string
-        required: true
-      wsUrl:
-        type: string
-        required: true

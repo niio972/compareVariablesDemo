@@ -1,6 +1,6 @@
 /*
  * ******************************************************************************
- *                                     plotDemo.js
+ *                                     app.js
  *  js
  *  Copyright © INRA 2019
  *  Creation date:  06 March, 2019
@@ -10,7 +10,7 @@
 
 $(function() {
   // Comment for production case
-  // ocpu.seturl("http://138.102.159.37:8004/ocpu/apps/niio972/variablesStudy/R");
+  ocpu.seturl("http://138.102.159.37:8004/ocpu/apps/niio972/variablesStudy/R");
 
   // initialize parameters when token is valid
   $("#token").change(function() {
@@ -28,6 +28,7 @@ $(function() {
 });
 
 function initInputs() {
+  var config = initOpenSilexParameters();
   // test token send in url
   if (config.token == null || config.token == "") {
     alert("An accessToken is required");
@@ -48,7 +49,7 @@ function initInputs() {
 }
 
 function getInputs() {
-  var config = initOpenSilexConnection();
+  var config = initOpenSilexParameters();
 
   // input parameters in the form of the R function
   var varURIs = $("#variable").val();

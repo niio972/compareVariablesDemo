@@ -63,10 +63,10 @@ function showPlot(iframeInput, functionName, plotVarParameters) {
       );
       $("#submit").removeAttr("disabled");
       $("#cssLoader").removeClass("is-active");
-    }).fail(function(text) {
+    }).fail(function(request) {
       $("#submit").removeAttr("disabled");
       $("#cssLoader").removeClass("is-active");
-      alert("Error: " + req.responseText);
+      alert("An unknown error has append : " + request.responseText);
     }));
 }
 /**
@@ -143,9 +143,9 @@ function setListInputFromRList(inputId, RfunctionName, config, selectParameters 
       $("#cssLoader").removeClass("is-active");
       return inputList;
     }
-  ).fail(function(text) {
+  ).fail(function(request) {
     $("#cssLoader").removeClass("is-active");
-    alert("Error: " + req.responseText);
+    alert("Error: Token or wsURL not valid" + request.responseText);
   });
 }
 
@@ -176,11 +176,11 @@ function makeDatatable(inputId, getDFParameters) {
       $("#cssLoader").removeClass("is-active");
       $("#submit").removeAttr("disabled");
     })
-    .fail(function() {
+    .fail(function(request) {
       $("#submit").removeAttr("disabled");
       $("#cssLoader").removeClass("is-active");
       $(tablesDivId).html("");
-      alert("Error: " + req.responseText);
+      alert("An unknown error has append : " + request.responseText);
     })
 }
 /**
