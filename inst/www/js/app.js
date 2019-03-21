@@ -10,7 +10,7 @@
 
 $(function() {
   // Comment for production case
-  ocpu.seturl("http://138.102.159.37:8004/ocpu/apps/niio972/variablesStudy/R");
+  // ocpu.seturl("http://138.102.159.37:8004/ocpu/apps/niio972/variablesStudy/R");
 
   // initialize parameters when token is valid
   $("#token").change(function() {
