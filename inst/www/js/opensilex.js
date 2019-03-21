@@ -27,7 +27,7 @@ $(function() {
     accessToken : "16193fdee6ead394adf63466b49241fc"
     }
  */
-function initOpenSilexConnection() {
+function initOpenSilexParameters() {
   var params = new window.URLSearchParams(window.location.search);
   var config = {};
   
@@ -41,7 +41,6 @@ function initOpenSilexConnection() {
   } else {
     config.wsUrl = params.get("wsUrl");
   }
-
 
   return config;
 }

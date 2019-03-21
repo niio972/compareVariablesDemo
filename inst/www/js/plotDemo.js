@@ -7,7 +7,6 @@
  *  Contact: arnaud.charleroy@inra.fr
  * ******************************************************************************
  */
-config = {};
 
 $(function() {
   // Comment for production case
@@ -29,21 +28,28 @@ $(function() {
 });
 
 function initInputs() {
-  config = initOpenSilexConnection();
   // test token send in url
   if (config.token == null || config.token == "") {
     alert("An accessToken is required");
-  } else {
-    // variables' initialization
-    // if fail disabled input
-    setListInputFromRList("variable","variableList", config, {
-      maximumSelectionLength: 2,
-      multiple: true
-    });
-  }
+    return false;
+  } 
+  if (config.wsUrl == null || config.wsUrl == "") {
+    alert("A wsUrl is required");
+    return false;
+  } 
+  
+  // variables' initialization
+  // if fail disabled input
+  setListInputFromRList("variable","variableList", config, {
+    maximumSelectionLength: 2,
+    multiple: true
+  });
+
 }
 
 function getInputs() {
+  var config = initOpenSilexConnection();
+
   // input parameters in the form of the R function
   var varURIs = $("#variable").val();
 
