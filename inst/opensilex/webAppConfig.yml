@@ -7,6 +7,7 @@ integratedFunctions:
     description : |
       A demo app that help you to compare two variables
     label: "Compare two variables"
+     # external Client (optional)
     type: graphic
     graphicType: plotly
     formParameters:
@@ -18,9 +19,7 @@ integratedFunctions:
         required: true
       token:
         type: string
-        visibility: hidden
         required: true
       wsUrl:
         type: string
-        visibility: hidden
         required: true
