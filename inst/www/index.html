@@ -11,14 +11,13 @@
     <!-- fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css"">
     <!-- select2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link href="css/select2.min.css" rel="stylesheet" />
     <!-- jquery ui -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
     <!-- css loader -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.1/css-loader.css">
+    <link rel="stylesheet" href="css/css-loader.css">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -27,7 +26,7 @@
 <body>
     <div class="wrap">
         <div class="container-fluid">
-            <h2 >Demo - Variable data comparison</h2>
+            <h2 >Demo Application - Variable data comparison</h2>
             <br>
             <div class="col-md-12">
                 <!-- form -->
@@ -38,14 +37,20 @@
                             <strong>
                                 <label for="token"> Token </label>
                             </strong>
-                            <input type="text" id="token" name="token" />
+                            <input class="form-control" type="text" id="token" name="token" />
                         </div>
                         <!-- wsUrl -->
                         <div class="form-group">
                             <strong>
                                 <label for="wsUrl"> wsUrl </label>
                             </strong>
-                            <input type="text" id="wsUrl" name="wsUrl" value="http://www.opensilex.org/openSilexAPI/rest/" />
+                            <input class="form-control" type="text" id="wsUrl" name="wsUrl" value="http://www.opensilex.org/openSilexAPI/rest/" />
+                        </div>
+                          <!-- submit -->
+                        <div class="form-group">
+                        <button id="loadVariable" type="submit" class="btn btn-primary">
+                              Set Web Service parameters !
+                        </button>
                         </div>
                         <!-- variable -->
                         <div class="form-group">
@@ -72,13 +77,11 @@
     </div>
     
     <!-- jquery -->
-    <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/select2.min.js"></script>
     <!-- opencpu client -->
     <script src="js/opencpu-0.5.js"></script>
     <script src="js/opensilex.js"></script>

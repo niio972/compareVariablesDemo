@@ -2,8 +2,8 @@
 availableFunctions:
   - plotVarDemo
 integratedFunctions:
-# web client integrated function configuration
+  # web client integrated function configuration
   plotVarDemo:
-    description : |
+    description: |
       A demo app that help you to compare two variables
     label: "Compare two variables"
