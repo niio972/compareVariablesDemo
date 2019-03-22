@@ -7,7 +7,7 @@
  *  Contact: arnaud.charleroy@inra.fr
  * ******************************************************************************
  */
-
+configOpenSilexParameters = {};
 /**
  * Permit to resize datatables inner jquery tabs
  */
@@ -51,7 +51,6 @@ function isValidURL(urlString) {
  */
 function initOpenSilexParameters() {
   var params = new window.URLSearchParams(window.location.search);
-  var config = {};
   
   var token;
   var wsUrl;
@@ -67,13 +66,20 @@ function initOpenSilexParameters() {
     wsUrl = params.get("wsUrl");
   }
   
-  config.token = token;
-  config.wsUrl = wsUrl;
-  
-  return config;
+  configOpenSilexParameters.token = token;
+  configOpenSilexParameters.wsUrl = wsUrl;
 }
 
-
+/**
+ * return configuration object
+ *  {
+ *   wsUrl : "http://www.opensilex.org:8080/openSilexAPI/rest/",
+ *   accessToken : "16193fdee6ead394adf63466b49241fc"
+ *   }
+ */
+function getConfigOpenSilexParameters(){
+  return configOpenSilexParameters;
+}
 /**
  * Link a R plotly graph to a div
  * @param {string} iframeInput div input

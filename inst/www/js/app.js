@@ -28,7 +28,9 @@ $(function() {
 });
 
 function initInputs() {
-  var config = initOpenSilexParameters();
+  initOpenSilexParameters();
+
+  var config = getConfigOpenSilexParameters();
   // test token send in url
   if (config.token == null || config.token == "") {
     alert("An accessToken is required");
@@ -49,7 +51,7 @@ function initInputs() {
 }
 
 function getInputs() {
-  var config = initOpenSilexParameters();
+  var config = getConfigOpenSilexParameters();
 
   // input parameters in the form of the R function
   var varURIs = $("#variable").val();
