@@ -7,10 +7,7 @@
  *  Contact: arnaud.charleroy@inra.fr
  * ******************************************************************************
  */
-/**
- * Global config variable
- */
-config = {}
+
 /**
  * Permit to resize datatables inner jquery tabs
  */
