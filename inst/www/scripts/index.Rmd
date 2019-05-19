@@ -14,6 +14,8 @@ output:
 ```{r, echo=FALSE}
 htmltools::tags$script(src = "//code.jquery.com/jquery-1.11.1.min.js")
 htmltools::tags$script(src = "//cdn.opencpu.org/opencpu-0.4.js")
+htmltools::tags$script(src = "../js/opensilex.js")
+htmltools::tags$script(src = "../js/app.js")
 ```
 
 
@@ -36,4 +38,15 @@ Loading a page is slow due to the size of the web page loaded: so far 1.4 Mb.
 Most of the size is due to the flexdashboard interface (multiple pages & tab adjustment).
 
 There is a trade off between the complexity of the page (mobile compatible or not, multiple pages, etc.) and the size of the page.
+
+```{r, echo=TRUE}
+print(2+2)
+```
+
+### Maps
+
+```{r}
+htmltools::tags$input(type="integer", class="form-control", id="myid", value="1", style = "width: 90%")
+htmltools::tags$button("Update dashboard!", type="submit", id="idsubmit", class="btn btn-default")
+```
 
