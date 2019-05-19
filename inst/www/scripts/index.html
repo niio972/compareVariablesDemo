@@ -8,9 +8,9 @@
 
 
 
-<title>Flexdashboard with opencpu back-end</title>
+<title>OpenSILEX app with OpenCPU</title>
 
-<meta property="og:title" content="Flexdashboard with opencpu back-end" />
+<meta property="og:title" content="OpenSILEX app with OpenCPU" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -810,7 +810,7 @@ html, body {
   
 </span>
 <span class="navbar-brand">
-  Flexdashboard with opencpu back-end
+  OpenSILEX app with OpenCPU
   <span class="navbar-author">
         </span>
 </span>
@@ -2604,10 +2604,73 @@ window.FlexDashboardComponents.push({
 
 <div id="dashboard-container">
 
+<script>
+
+$(function() {
+  // Comment for production case
+  // ocpu.seturl("http://138.102.159.37:8004/ocpu/apps/niio972/compareVariablesDemo/R");
+
+  // initialize parameters when token is valid
+  $("#token").change(function() {
+    initInputs();
+  });
+
+  // show graph button
+  $("#submit").click(function(e) {
+    e.preventDefault();
+    functionsParameters = getInputs();
+    // basical
+    // create a plot from htmlwidget named function name .e.g plotVar with Widget.html
+    showPlot("plotDiv", "plotVarDemo", functionsParameters);
+  });
+});
+
+function initInputs() {
+  var config = initOpenSilexParameters();
+  // test token send in url
+  if (config.token == null || config.token == "") {
+    alert("An accessToken is required");
+    return false;
+  } 
+  if (config.wsUrl == null || config.wsUrl == "") {
+    alert("A wsUrl is required");
+    return false;
+  } 
+  
+  // variables' initialization
+  // if fail disabled input
+  setListInputFromRList("variable","variableList", config, {
+    maximumSelectionLength: 2,
+    multiple: true
+  });
+
+}
+
+function getInputs() {
+  var config = initOpenSilexParameters();
+
+  // input parameters in the form of the R function
+  var varURIs = $("#variable").val();
+
+  if (varURIs == null || varURIs.length == 0) {
+    alert("you must choose at least one variable");
+    return false;
+  }
+  functionsParameters = {
+    varURI: varURIs,
+    token: config.token,
+  };
+  if (config.wsUrl !== null) {
+    functionsParameters["wsUrl"] = config.wsUrl;
+  }
+  return functionsParameters;
+}
+
+</script>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><script src="//code.jquery.com/jquery-1.11.1.min.js"></script><script src="//cdn.opencpu.org/opencpu-0.4.js"></script><script src="../js/opensilex.js"></script><script src="../js/app.js"></script></p>
+<p><script src="//code.jquery.com/jquery-1.11.1.min.js"></script><script src="//cdn.opencpu.org/opencpu-0.4.js"></script><script src="../js/opensilex.js"></script></p>
 <div id="demo" class="section level1">
 <h1>Demo</h1>
 <div id="row" class="section level2" data-height="200">
@@ -2628,7 +2691,7 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<p><input type="integer" class="form-control" id="myid" value="1" style="width: 90%"/><button type="submit" id="idsubmit" class="btn btn-default">Update dashboard!</button></p>
+<p><select class="form-control" id="variable"></select><input type="integer" class="form-control" id="myid" value="1" style="width: 90%"/><button type="submit" id="idsubmit" class="btn btn-default">Update dashboard!</button></p>
 </div>
 </div>
 </div>

@@ -1,5 +1,5 @@
 ---
-title: "Flexdashboard with opencpu back-end"
+title: "OpenSILEX app with OpenCPU"
 output: 
   flexdashboard::flex_dashboard:
     theme: cerulean
@@ -10,12 +10,76 @@ output:
     #   - { title: "About", href: "http://data-laborer.eu", align: right }
     # source_code: "https://github.com/YvesCR/flexocpu"
 ---
+<script>
+
+$(function() {
+  // Comment for production case
+  // ocpu.seturl("http://138.102.159.37:8004/ocpu/apps/niio972/compareVariablesDemo/R");
+
+  // initialize parameters when token is valid
+  $("#token").change(function() {
+    initInputs();
+  });
+
+  // show graph button
+  $("#submit").click(function(e) {
+    e.preventDefault();
+    functionsParameters = getInputs();
+    // basical
+    // create a plot from htmlwidget named function name .e.g plotVar with Widget.html
+    showPlot("plotDiv", "plotVarDemo", functionsParameters);
+  });
+});
+
+function initInputs() {
+  var config = initOpenSilexParameters();
+  // test token send in url
+  if (config.token == null || config.token == "") {
+    alert("An accessToken is required");
+    return false;
+  } 
+  if (config.wsUrl == null || config.wsUrl == "") {
+    alert("A wsUrl is required");
+    return false;
+  } 
+  
+  // variables' initialization
+  // if fail disabled input
+  setListInputFromRList("variable","variableList", config, {
+    maximumSelectionLength: 2,
+    multiple: true
+  });
+
+}
+
+function getInputs() {
+  var config = initOpenSilexParameters();
+
+  // input parameters in the form of the R function
+  var varURIs = $("#variable").val();
+
+  if (varURIs == null || varURIs.length == 0) {
+    alert("you must choose at least one variable");
+    return false;
+  }
+  functionsParameters = {
+    varURI: varURIs,
+    token: config.token,
+  };
+  if (config.wsUrl !== null) {
+    functionsParameters["wsUrl"] = config.wsUrl;
+  }
+  return functionsParameters;
+}
+
+</script>
+
 
 ```{r, echo=FALSE}
 htmltools::tags$script(src = "//code.jquery.com/jquery-1.11.1.min.js")
 htmltools::tags$script(src = "//cdn.opencpu.org/opencpu-0.4.js")
 htmltools::tags$script(src = "../js/opensilex.js")
-htmltools::tags$script(src = "../js/app.js")
+# htmltools::tags$script(src = "../js/app.js")
 ```
 
 
@@ -46,6 +110,16 @@ print(2+2)
 ### Maps
 
 ```{r}
+
+htmltools::tags$select(class="form-control", id="variable")
+
+
+htmltools::tags$inputt(type="submit", id="submit")
+
+htmltools::tags$div(class="embed-responsive embed-responsive-4by3")
+htmltools::tags$div(class="embed-responsive embed-responsive-4by3", id="plotDiv")
+
+
 htmltools::tags$input(type="integer", class="form-control", id="myid", value="1", style = "width: 90%")
 htmltools::tags$button("Update dashboard!", type="submit", id="idsubmit", class="btn btn-default")
 ```
